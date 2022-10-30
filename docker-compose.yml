@@ -1,0 +1,25 @@
+
+
+version: '3.8'
+services:
+  db:
+    container_name: kanban
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: diva
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: kanban_kita
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/pgdata:/var/lib/postgresql/data  
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: diva@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"  
